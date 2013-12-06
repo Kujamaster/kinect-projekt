@@ -8,7 +8,11 @@
 	<classpathentry kind="lib" path="libs/minim-spi.jar"/>
 	<classpathentry kind="lib" path="libs/minim.jar"/>
 	<classpathentry kind="lib" path="libs/mp3spi1.9.4.jar"/>
-	<classpathentry kind="lib" path="libs/SimpleOpenNI.jar"/>
+	<classpathentry kind="lib" path="SimpleOpenNI/library/SimpleOpenNI.jar">
+		<attributes>
+			<attribute name="org.eclipse.jdt.launching.CLASSPATH_ATTR_LIBRARY_PATH_ENTRY" value="KinectProject/libs/win64"/>
+		</attributes>
+	</classpathentry>
 	<classpathentry kind="lib" path="libs/tritonus_aos.jar"/>
 	<classpathentry kind="lib" path="libs/tritonus_share.jar"/>
 	<classpathentry kind="output" path="bin"/>
