@@ -15,7 +15,7 @@
 	</classpathentry>
 	<classpathentry kind="lib" path="libs/tritonus_aos.jar"/>
 	<classpathentry kind="lib" path="libs/tritonus_share.jar"/>
-	<classpathentry kind="lib" path="libs/lwjgl/lwjgl_util.jar"/>
+	<classpathentry kind="lib" path="libs/lwjgl/lwjgl_util.jar" sourcepath="libs/lwjgl/src"/>
 	<classpathentry kind="lib" path="libs/lwjgl/lwjgl.jar" sourcepath="libs/lwjgl/src">
 		<attributes>
 			<attribute name="org.eclipse.jdt.launching.CLASSPATH_ATTR_LIBRARY_PATH_ENTRY" value="KinectProject/libs/lwjgl/native/windows"/>

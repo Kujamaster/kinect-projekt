@@ -11,7 +11,6 @@ public class GraphicEngine {
 	private String name;
 	private int screenHeight;
 	private int screenWidth;
-	Cube cube = new Cube(100, 100, 300, 300, null);
 	
 	
 	public GraphicEngine() {
@@ -37,27 +36,20 @@ public class GraphicEngine {
 	}
 	
 	public void init() {
-		
 		glMatrixMode(GL_PROJECTION);
 		glLoadIdentity();
 		glOrtho(0, screenHeight, 0, screenWidth, 1, -1);
 		glMatrixMode(GL_MODELVIEW);
 	}
 	
-	public void CreateCube(int posX, int posY, int height, int width, Color col) {
-		Cube cube = new Cube(posX, posY, height, width, col);
-		//cube.render();
+	public void CreateCube(Cube cube, int posX, int posY, int height, int width, Color col) {
+		cube = new Cube(posX, posY, height, width, col);
 	}
 	
 	protected void render() {
 		glClear(GL_COLOR_BUFFER_BIT);
 		glColor3f(0.5f, 0.0f, 0.0f);
-		glBegin(GL_QUADS);
-		glVertex2f(cube.getPosX(),cube.getPosY());//bottom-left(x, y)
-		glVertex2f(cube.getPosX()+cube.getWidth(),cube.getPosY());//bottom-right(x, y)
-		glVertex2f(cube.getPosX()+cube.getWidth(),cube.getPosY()+cube.getHeight());//top-right(x, y)
-		glVertex2f(cube.getPosX(),cube.getPosY()+cube.getHeight());//top-left(x, y)
-		glEnd();
+		Cube.render();
 		
 	}
 	

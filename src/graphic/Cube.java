@@ -11,13 +11,13 @@ import static org.lwjgl.opengl.GL11.glVertex2f;
 import org.lwjgl.util.Color;
 
 public class Cube {
-	private int posX;
-	private int posY;
-	private int height;
-	private int width;
-	private int velX;
-	private int velY;
-	private Color color;
+	private static int posX;
+	private static int posY;
+	private static int height;
+	private static int width;
+	private static int velX;
+	private static int velY;
+	private static Color color;
 	
 	public Cube(int posX, int posY, int height, int width, Color col) {
 		setPosX(posX);
@@ -55,14 +55,14 @@ public class Cube {
 		//TODO: Delete This
 	}
 	
-	public void render() {
-		glClear(GL_COLOR_BUFFER_BIT);
-		glColor3f(0.5f, 0.0f, 0.0f);
+	public static void render() {
+		//glClear(GL_COLOR_BUFFER_BIT);
+		glColor3f(0.0f, 0.5f, 0.0f);
 		glBegin(GL_QUADS);
-		glVertex2f(posX,posY);//bottom-left(x, y)
-		glVertex2f(posX+width,posY);//bottom-right(x, y)
-		glVertex2f(posX+width,posY+height);//top-right(x, y)
-		glVertex2f(posX,posY+height);//top-left(x, y)
+			glVertex2f(posX,posY);//bottom-left(x, y)
+			glVertex2f(posX+width,posY);//bottom-right(x, y)
+			glVertex2f(posX+width,posY+height);//top-right(x, y)
+			glVertex2f(posX,posY+height);//top-left(x, y)
 		glEnd();
 	}
 	
