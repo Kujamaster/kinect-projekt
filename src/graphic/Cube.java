@@ -1,5 +1,13 @@
 package graphic;
 
+import static org.lwjgl.opengl.GL11.GL_COLOR_BUFFER_BIT;
+import static org.lwjgl.opengl.GL11.GL_QUADS;
+import static org.lwjgl.opengl.GL11.glBegin;
+import static org.lwjgl.opengl.GL11.glClear;
+import static org.lwjgl.opengl.GL11.glColor3f;
+import static org.lwjgl.opengl.GL11.glEnd;
+import static org.lwjgl.opengl.GL11.glVertex2f;
+
 import org.lwjgl.util.Color;
 
 public class Cube {
@@ -46,7 +54,18 @@ public class Cube {
 	public void Remove() {
 		//TODO: Delete This
 	}
-
+	
+	public void render() {
+		glClear(GL_COLOR_BUFFER_BIT);
+		glColor3f(0.5f, 0.0f, 0.0f);
+		glBegin(GL_QUADS);
+		glVertex2f(posX,posY);//bottom-left(x, y)
+		glVertex2f(posX+width,posY);//bottom-right(x, y)
+		glVertex2f(posX+width,posY+height);//top-right(x, y)
+		glVertex2f(posX,posY+height);//top-left(x, y)
+		glEnd();
+	}
+	
 	public int getVelY() {
 		return velY;
 	}
