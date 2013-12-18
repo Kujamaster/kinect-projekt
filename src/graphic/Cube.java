@@ -28,12 +28,11 @@ public class Cube{
 		setWidth(width);
 	}
 	
-	public Cube(int posX, int posY, int width, int height, Color col, int velX, int velY) {
+	public Cube(int posX, int posY, int width, int height, int velX, int velY) {
 		setPosX(posX);
 		setPosY(posY);
 		setHeight(height);
 		setWidth(width);
-		setColor(col);
 		setVelX(velX);
 		setVelY(velY);
 	}
