@@ -12,6 +12,7 @@ public class KinectController extends PApplet {
 	int closestValue;
 	int closestX;
 	int closestY;
+	
 
 	public void setup(){
 	  size(640, 480);
