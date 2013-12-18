@@ -29,32 +29,22 @@ public class Graphic extends JPanel {
 	}
 	
 	public void init() {
-		cubes.add(0,new Cube(20, 20, 100, 100));
+		cubes.add(0,new Cube(100, 100, 100, 100));
+		cubes.get(0).setVelX(2);
+		cubes.get(0).setVelY(1);
 		//cubes.add(1, new Cube(20, 20, 100, 100));
 	}
 	
 	public void update() {
-		cubes.get(0).setVelX(2);
 		//System.out.println("Test");
 		int dir = 1;
 		for(Cube c : cubes){
-			c.setPosX(c.getPosX() + c.getVelX());
-			if(c.getPosX() > (500 - c.getWidth())) {
-				//dir =- dir;
-				//c.setVelX(dir * c.getVelX());
-				//c.setPosX(300 - c.getWidth());
-				//c.setPosX(c.getPosX() - 1 * c.getVelX());
-				c.setVelX(-1 * c.getVelX());
-			}
-			if (c.getPosX() <= 0) {
-				//dir =- dir;
-				//c.setVelX(dir * c.getVelX());
-				//c.setPosX(0);
-				//c.setPosX(c.getPosX() + 1 * c.getVelX());
-				c.setVelX(1 * c.getVelX());
-			}
 			
-			System.out.println(c.getVelX() + " dir " + dir);
+			c.Move();
+			c.getPosX();
+			c.getPosY();
+			System.out.println(c.getPosX() + " , " + c.getPosY());
+			System.out.println(c.getVelX() + " , " + c.getVelY());
 		}
 		this.repaint();
         try {
