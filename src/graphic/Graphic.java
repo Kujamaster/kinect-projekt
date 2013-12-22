@@ -30,11 +30,11 @@ public class Graphic extends JPanel {
 	
 	public void init() {
 		cubes.add(0,new Cube(20, 20, 100, 100));
-		//cubes.add(1, new Cube(20, 20, 100, 100));
+		cubes.get(0).setVelX(2);
 	}
 	
 	public void update() {
-		cubes.get(0).setVelX(2);
+		
 		//System.out.println("Test");
 		int dir = 1;
 		for(Cube c : cubes){
