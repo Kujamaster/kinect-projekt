@@ -1,13 +1,19 @@
 package graphic;
 
-import java.awt.*;
+import java.awt.BorderLayout;
+import java.awt.Container;
+import java.awt.GridLayout;
 
-import javax.swing.*;
+import javax.swing.JFrame;
+
+import kinect.KinectController;
+import processing.core.PApplet;
 
 public class Frame {
 	private static int screenWidth;
 	private static int screenHeight;
 	Graphic panel = new Graphic();
+	PApplet kinect = new KinectController();
 	public Frame(String title, int width, int height) {
 		this.setScreenWidth(width);
 		this.setScreenHeight(height);
@@ -21,7 +27,9 @@ public class Frame {
 		Container pane = gui.getContentPane();
 		pane.setLayout(new GridLayout(1,1));
 		
-		pane.add(panel);
+		//pane.add(panel);
+		pane.add(kinect, BorderLayout.CENTER);
+		kinect.init();
 		gui.setVisible(true);
 	}
 	

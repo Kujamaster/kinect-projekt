@@ -14,6 +14,9 @@ public class Cube{
 	private int velY;
 	private Color color;
 	
+	public int screenHeight = Frame.getScreenHeight();
+	public int screenWidth = Frame.getScreenWidth();
+	
 	public Cube() {
 		
 	}
@@ -25,12 +28,11 @@ public class Cube{
 		setWidth(width);
 	}
 	
-	public Cube(int posX, int posY, int width, int height, Color col, int velX, int velY) {
+	public Cube(int posX, int posY, int width, int height, int velX, int velY) {
 		setPosX(posX);
 		setPosY(posY);
 		setHeight(height);
 		setWidth(width);
-		setColor(col);
 		setVelX(velX);
 		setVelY(velY);
 	}
@@ -43,14 +45,33 @@ public class Cube{
 		//TODO: Split this
 	}
 	
-	public void Move(int posX, int posY, int velX, int velY){
+	public void Move(){
 		//TODO: Move this
-		
-		Collide(posX, posY, velX, velY);
+		setPosX(getPosX() + getVelX());
+		setPosY(getPosY() + getVelY());
+		Collide();// check collide then move
+		System.out.println("Move");
 	}
 	
-	private void Collide(int posX, int posY, int velX, int velY) {
+	private void Collide() {
 		//TODO: Check if collide with screen
+		if(getPosX() < 0) {
+			this.velX =- this.velX;
+			setPosX(0);
+		}
+		if(getPosY() < 0) {
+			this.velY =- this.velY;
+			setPosY(0);
+		}
+		if(getPosX() > Frame.getScreenHeight()) {
+			this.velX =- this.velX;
+			setPosX(Frame.getScreenHeight());
+		}
+		if(getPosY() > Frame.getScreenWidth()) {
+			this.velY =- this.velY;
+			setPosY(Frame.getScreenWidth());
+		}
+
 	}
 	
 	public void Remove() {
