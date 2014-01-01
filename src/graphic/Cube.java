@@ -2,6 +2,7 @@ package graphic;
 
 import java.awt.Color;
 import java.awt.Rectangle;
+import java.util.ArrayList;
 
 
 
@@ -14,6 +15,7 @@ public class Cube{
 	private int velY;
 	private Color color;
 	
+	public boolean isSplit = false;
 	public int screenHeight = Frame.getScreenHeight();
 	public int screenWidth = Frame.getScreenWidth();
 	
@@ -50,7 +52,6 @@ public class Cube{
 		setPosX(getPosX() + getVelX());
 		setPosY(getPosY() + getVelY());
 		Collide();// check collide then move
-		System.out.println("Move");
 	}
 	
 	private void Collide() {
@@ -63,15 +64,15 @@ public class Cube{
 			this.velY =- this.velY;
 			setPosY(0);
 		}
-		if(getPosX() > Frame.getScreenHeight()) {
+		if(getPosX() + getWidth() > 600) {
 			this.velX =- this.velX;
-			setPosX(Frame.getScreenHeight());
+			setPosX(600 -100);
 		}
-		if(getPosY() > Frame.getScreenWidth()) {
+		if(getPosY() + getHeight() > 500) {
 			this.velY =- this.velY;
-			setPosY(Frame.getScreenWidth());
+			setPosY(500 -100);
 		}
-
+		// Collide with cubes
 	}
 	
 	public void Remove() {

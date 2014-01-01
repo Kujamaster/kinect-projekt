@@ -10,8 +10,8 @@ import kinect.KinectController;
 import processing.core.PApplet;
 
 public class Frame {
-	private static int screenWidth;
-	private static int screenHeight;
+	private static int screenWidth = 500;
+	private static int screenHeight = 500;
 	Graphic panel = new Graphic();
 	PApplet kinect = new KinectController();
 	public Frame(String title, int width, int height) {
@@ -27,9 +27,9 @@ public class Frame {
 		Container pane = gui.getContentPane();
 		pane.setLayout(new GridLayout(1,1));
 		
-		//pane.add(panel);
-		pane.add(kinect, BorderLayout.CENTER);
-		kinect.init();
+		pane.add(panel);
+		//pane.add(kinect, BorderLayout.CENTER);
+		//kinect.init();
 		gui.setVisible(true);
 	}
 	

@@ -7,7 +7,7 @@ public boolean running = false;
 	public void Test(){
 		Frame frame = new Frame("Test", 600, 500);
 		
-		running = false;
+		running = true;
 		
 		while(running) {
 			frame.update();
