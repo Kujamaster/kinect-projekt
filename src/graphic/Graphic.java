@@ -1,15 +1,19 @@
 package graphic;
 
 import java.awt.*;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseMotionListener;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.*;
 
 @SuppressWarnings("serial")
-public class Graphic extends JPanel {
+public class Graphic extends JPanel implements MouseMotionListener {
 	ArrayList<Cube> cubes = new ArrayList<Cube>();
 	boolean maxReached = false;
+	int mouseX, mouseY;
 	
 	public Graphic() {
 		setBackground(Color.WHITE);
@@ -29,7 +33,20 @@ public class Graphic extends JPanel {
 	}
 	
 	public void init() {
-		cubes.add(new Cube(20, 20, 100, 100, 2, 5));
+		addMouseMotionListener(this);
+		cubes.add(new Cube(200, 200, 100, 100, 2, 5));
+	}
+	
+	@Override
+	public void mouseMoved(MouseEvent e) {
+		mouseX = e.getX();
+		mouseY = e.getY();
+	}
+	
+	@Override
+	public void mouseDragged(MouseEvent e) {
+		// TODO Auto-generated method stub
+		
 	}
 	
 	public void update() {
@@ -37,8 +54,8 @@ public class Graphic extends JPanel {
 		if(!cubes.isEmpty()) {
 			for(Cube c : cubes){		
 				c.Move();
-				if(c.getPosX() <= MouseInfo.getPointerInfo().getLocation().getX() && c.getPosX() + c.getWidth() >= MouseInfo.getPointerInfo().getLocation().getX()) {
-					if(c.getPosY() <= MouseInfo.getPointerInfo().getLocation().getY() && c.getPosY() + c.getHeight() >= MouseInfo.getPointerInfo().getLocation().getY()) {
+				if(c.getPosX() < mouseX && c.getPosX() + c.getHeight() > mouseX) {
+					if(c.getPosY() < mouseY && c.getPosY() + c.getWidth() > mouseY) {
 						System.out.println("Mouse inside cube");
 						
 						tempVelX = c.getVelX();
@@ -85,4 +102,6 @@ public class Graphic extends JPanel {
         }
 		
 	}
+
+
 }

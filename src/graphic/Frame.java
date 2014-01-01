@@ -3,6 +3,7 @@ package graphic;
 import java.awt.BorderLayout;
 import java.awt.Container;
 import java.awt.GridLayout;
+import java.awt.event.MouseMotionListener;
 
 import javax.swing.JFrame;
 
@@ -21,8 +22,6 @@ public class Frame {
 		gui.setTitle(title);
 		gui.setSize(width,height);
 		gui.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		
-		
 		
 		Container pane = gui.getContentPane();
 		pane.setLayout(new GridLayout(1,1));
