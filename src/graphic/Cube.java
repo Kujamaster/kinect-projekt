@@ -64,13 +64,13 @@ public class Cube{
 			this.velY =- this.velY;
 			setPosY(0);
 		}
-		if(getPosX() + getWidth() > 600) {
+		if(getPosX() + getWidth() > Frame.getScreenWidth()) {
 			this.velX =- this.velX;
-			setPosX(600 -100);
+			setPosX(Frame.getScreenWidth() - getWidth());
 		}
-		if(getPosY() + getHeight() > 500) {
+		if(getPosY() + getHeight() > Frame.getScreenHeight()) {
 			this.velY =- this.velY;
-			setPosY(500 -100);
+			setPosY(Frame.getScreenHeight() - getHeight());
 		}
 		// Collide with cubes
 	}

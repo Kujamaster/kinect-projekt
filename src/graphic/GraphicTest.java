@@ -5,7 +5,7 @@ public class GraphicTest {
 public boolean running = false;	
 
 	public void Test(){
-		Frame frame = new Frame("Test", 600, 500);
+		Frame frame = new Frame("Test", 1920, 1050);
 		
 		running = true;
 		

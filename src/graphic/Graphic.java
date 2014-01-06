@@ -16,7 +16,7 @@ public class Graphic extends JPanel implements MouseMotionListener {
 	int mouseX, mouseY;
 	
 	public Graphic() {
-		setBackground(Color.WHITE);
+		setBackground(Color.BLACK);
 		init();
 	}
 	
@@ -26,7 +26,7 @@ public class Graphic extends JPanel implements MouseMotionListener {
 		//TODO: paint things
 		
 		
-		g.setColor(Color.BLACK);
+		g.setColor(Color.RED);
 		for(Cube temp : cubes){
 			g2.fill(temp.draw());
 		}
@@ -34,7 +34,7 @@ public class Graphic extends JPanel implements MouseMotionListener {
 	
 	public void init() {
 		addMouseMotionListener(this);
-		cubes.add(new Cube(200, 200, 100, 100, 2, 5));
+		cubes.add(new Cube(200, 200, 300, 100, 2, 5));
 	}
 	
 	@Override
@@ -65,7 +65,7 @@ public class Graphic extends JPanel implements MouseMotionListener {
 						tempWidth = c.getWidth();
 						tempHeight = c.getHeight();
 						
-						c.isSplit = true;
+						//c.isSplit = true;
 					}
 				}
 			}
