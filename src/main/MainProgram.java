@@ -13,5 +13,4 @@ public class MainProgram {
 		GraphicTest gTest = new GraphicTest();
 		gTest.Test();
 	}
-	
 }
