@@ -1,9 +1,9 @@
 package graphic;
 
-import java.awt.BorderLayout;
 import java.awt.Container;
 import java.awt.GridLayout;
-import java.awt.event.MouseMotionListener;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 import javax.swing.JFrame;
 
@@ -15,25 +15,47 @@ public class Frame {
 	private static int screenHeight = 500;
 	Graphic panel = new Graphic();
 	PApplet kinect = new KinectController();
+	JFrame gui = new JFrame();
+	Container pane = gui.getContentPane();
+
 	public Frame(String title, int width, int height) {
 		this.setScreenWidth(width);
 		this.setScreenHeight(height);
-		JFrame gui = new JFrame();
+
 		gui.setTitle(title);
-		gui.setSize(width,height);
+		gui.setSize(width, height);
 		gui.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		
-		Container pane = gui.getContentPane();
-		pane.setLayout(new GridLayout(1,1));
-		
+
+		pane.setLayout(new GridLayout(1, 1));
+
 		pane.add(panel);
-		//pane.add(kinect, BorderLayout.CENTER);
-		//kinect.init();
+		// pane.add(kinect, BorderLayout.CENTER);
+		// kinect.init();
 		gui.setVisible(true);
 	}
-	
+
 	public void update() {
-		panel.update();
+		if (panel.restart) {
+			int timeToRestart = 10;
+			while (timeToRestart >= 0) {
+				timeToRestart--;
+				System.out.println(timeToRestart);
+				try {
+					Thread.sleep(1000);
+				} catch (InterruptedException ex) {
+					Logger.getLogger(Frame.class.getName()).log(Level.SEVERE,
+							null, ex);
+				}
+			}
+			pane.remove(panel);
+			panel.removeAll();
+			panel = new Graphic();
+			pane.add(panel);
+			pane.validate();
+			System.out.println("New game");
+		} else {
+			panel.update();
+		}
 	}
 
 	public static int getScreenWidth() {
@@ -53,6 +75,4 @@ public class Frame {
 	public void setScreenHeight(int screenHeight) {
 		this.screenHeight = screenHeight;
 	}
-
 }
-
