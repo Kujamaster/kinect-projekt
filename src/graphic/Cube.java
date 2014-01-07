@@ -57,6 +57,7 @@ public class Cube {
 		setPosY(getPosY() + getVelY());
 		Collide();// check collide then move
 		Split();
+		System.out.println(getPosX()/8);
 	}
 
 	private void Collide() {
@@ -72,18 +73,18 @@ public class Cube {
 		if ((getPosX() + getWidth()) > Frame.getScreenWidth()) {
 			this.velX = -this.velX;
 			setPosX(Frame.getScreenWidth() - getWidth());
-			System.out.println("Object pos: " + getPosX() + " , " + getPosY()
+			/*System.out.println("Object pos: " + getPosX() + " , " + getPosY()
 					+ " , Size: " + getWidth() + " , " + getHeight());
 			System.out.println(Frame.getScreenWidth() - getWidth());
-			System.out.println(Frame.getScreenWidth());
+			System.out.println(Frame.getScreenWidth());*/
 		}
-		if ((getPosY() + getHeight()) > Frame.getScreenHeight()) {
+		if ((getPosY() + getHeight() +30) > Frame.getScreenHeight()) {
 			this.velY = -this.velY;
-			setPosY(Frame.getScreenHeight() - getHeight());
-			System.out.println("Object pos: " + getPosX() + " , " + getPosY()
+			setPosY(Frame.getScreenHeight() - getHeight() - 30);
+			/*System.out.println("Object pos: " + getPosX() + " , " + getPosY()
 					+ " , Size: " + getWidth() + " , " + getHeight());
 			System.out.println(Frame.getScreenHeight() - getHeight());
-			System.out.println(Frame.getScreenHeight());
+			System.out.println(Frame.getScreenHeight());*/
 		}
 		// Collide with cubes
 	}
