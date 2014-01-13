@@ -1,5 +1,4 @@
 package kinect;
-import audio.Audio;
 import processing.core.*;
 import SimpleOpenNI.*;
 
@@ -7,18 +6,20 @@ import SimpleOpenNI.*;
 public class KinectController extends PApplet {
 
 	SimpleOpenNI kinect;
-	Audio audio = new Audio();
 
 	int closestValue;
-	int closestX;
-	int closestY;
+	public int closestX;
+	public int closestY;
+	public float lastX;
+	public float lastY;
+	public int useX;
+	public int useY;
 	
 
 	public void setup(){
 	  size(640, 480);
 	  kinect = new SimpleOpenNI(this);
 	  kinect.enableDepth();
-	  audio.setup();
 	}
 
 	public void draw(){
@@ -35,7 +36,7 @@ public class KinectController extends PApplet {
 	      int currentDepthValue = depthValues[i];
 	      
 	      //if that pixel is closest one so far
-	      if(currentDepthValue > 0 && currentDepthValue < closestValue){
+	      if(currentDepthValue > 500 && currentDepthValue < 1500 && currentDepthValue < closestValue){
 	        //save the value
 	        closestValue = currentDepthValue;
 	        setCurrent(closestValue);
@@ -45,17 +46,20 @@ public class KinectController extends PApplet {
 	      }
 	    }
 	  }
+	  
+	  float interpolatedX = lerp(lastX, closestX, 0.2f);
+	  float interpolatedY = lerp(lastY, closestY, 0.2f);
 	  //Draw image on screen
 	  PImage depthImage = kinect.depthImage();
 	  image(depthImage, 0, 0);
-	  
+	  useX = (int) map(interpolatedX, 0, 640, 0, 1365);
+	  useY = (int) map(interpolatedY, 0, 480, 0, 730);
 	  //Draw circle at closest x and y value
 	  fill(255,0,0);
-	  ellipse(closestX, closestY, 25, 25);
+	  ellipse(interpolatedX, interpolatedY, 25, 25);
 	  println("Closest Value (mm): " + closestValue + " at X: " + closestX + " , Y: " + closestY);
-	  audio.setFrequency(closestValue);
-	  audio.update();
-	  
+	  lastX = interpolatedX;
+	  lastY = interpolatedY;
 	}
 	
 	public int getCurrent(){
