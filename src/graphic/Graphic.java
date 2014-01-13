@@ -60,9 +60,8 @@ public class Graphic extends JPanel {
 		if (!cubes.isEmpty()) {
 			for (Cube c : cubes) {
 				c.Move();
-				if (c.getPosX() < mouseX && c.getPosX() + c.getWidth() > mouseX) {
-					if (c.getPosY() < mouseY
-							&& c.getPosY() + c.getHeight() > mouseY) {
+				if ((c.getPosX() < mouseX && c.getPosX() + c.getWidth() > mouseX) || (c.getPosX() < mouseX + 20 && c.getPosX() + c.getWidth() > mouseX + 20)) {
+					if ((c.getPosY() < mouseY && c.getPosY() + c.getHeight() > mouseY) || (c.getPosY() < mouseY + 20 && c.getPosY() + c.getHeight() > mouseX + 20)) {
 						System.out.println("Mouse inside cube");
 
 						tempVelX = c.getVelX();

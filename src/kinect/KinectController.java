@@ -36,7 +36,7 @@ public class KinectController extends PApplet {
 	      int currentDepthValue = depthValues[i];
 	      
 	      //if that pixel is closest one so far
-	      if(currentDepthValue > 0 && currentDepthValue < closestValue){
+	      if(currentDepthValue > 500 && currentDepthValue < 1500 && currentDepthValue < closestValue){
 	        //save the value
 	        closestValue = currentDepthValue;
 	        setCurrent(closestValue);
@@ -47,8 +47,8 @@ public class KinectController extends PApplet {
 	    }
 	  }
 	  
-	  float interpolatedX = lerp(lastX, closestX, 0.3f);
-	  float interpolatedY = lerp(lastY, closestY, 0.3f);
+	  float interpolatedX = lerp(lastX, closestX, 0.2f);
+	  float interpolatedY = lerp(lastY, closestY, 0.2f);
 	  //Draw image on screen
 	  PImage depthImage = kinect.depthImage();
 	  image(depthImage, 0, 0);
