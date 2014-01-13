@@ -44,7 +44,7 @@ public class Cube {
 	public void Split() {
 		// TODO: Split this
 		if (recentlySplit == 0) {
-			recentlySplit = 25;
+			recentlySplit = 5;
 		} else {
 			recentlySplit--;
 		}

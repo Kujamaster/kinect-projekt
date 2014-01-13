@@ -12,13 +12,18 @@ import java.util.logging.Logger;
 
 import javax.swing.JPanel;
 
+import kinect.KinectController;
+import audio.AudioPlayer;
+import graphic.Frame;
+
 @SuppressWarnings("serial")
-public class Graphic extends JPanel implements MouseMotionListener {
+public class Graphic extends JPanel {
 	ArrayList<Cube> cubes = new ArrayList<Cube>();
 	boolean maxReached = false;
 	boolean restart = false;
 	int mouseX, mouseY;
 	Random rand = new Random();
+	Frame frame;
 	int randNbrX = rand.nextInt(6) + 1;
 	int randNbrY = rand.nextInt(6) + 1;
 
@@ -30,6 +35,10 @@ public class Graphic extends JPanel implements MouseMotionListener {
 	public void paintComponent(Graphics g) {
 		super.paintComponent(g);
 		Graphics2D g2 = (Graphics2D) g;
+		
+		g.setColor(Color.CYAN);
+		g.fillOval(mouseX, mouseY, 20, 20);
+
 
 		g.setColor(Color.RED);
 		for (Cube temp : cubes) {
@@ -39,23 +48,14 @@ public class Graphic extends JPanel implements MouseMotionListener {
 
 	public void init() {
 		System.out.println(randNbrX + " , " + randNbrY);
-		addMouseMotionListener(this);
+		AudioPlayer.init();
 		cubes.add(new Cube(200, 200, 300, 100, randNbrX, randNbrY));
 	}
 
-	@Override
-	public void mouseMoved(MouseEvent e) {
-		mouseX = e.getX();
-		mouseY = e.getY();
-	}
-
-	@Override
-	public void mouseDragged(MouseEvent e) {
-		// TODO Auto-generated method stub
-
-	}
 
 	public void update() {
+		
+		//kc.draw();
 		int tempVelX = 0, tempVelY = 0, tempPosX = 0, tempPosY = 0, tempWidth = 0, tempHeight = 0, tempIndex = 0;
 		if (!cubes.isEmpty()) {
 			for (Cube c : cubes) {
@@ -74,6 +74,7 @@ public class Graphic extends JPanel implements MouseMotionListener {
 
 						if (c.recentlySplit == 0) {
 							c.isSplit = true;
+							playSamp(mouseY);
 						}
 					}
 				}
@@ -106,11 +107,25 @@ public class Graphic extends JPanel implements MouseMotionListener {
 				}
 			}
 		}
+		
 		this.repaint();
 		try {
 			Thread.sleep(20);
 		} catch (InterruptedException ex) {
 			Logger.getLogger(Frame.class.getName()).log(Level.SEVERE, null, ex);
 		}
+	}
+	
+	public void setStuff(int x, int y) {
+		mouseX = x;
+		mouseY = y;
+		System.out.println("Test X: " + mouseX + " ,Y: " + mouseY);
+	}
+	
+	public void playSamp(int tempY){
+		int modY = this.getHeight()/8;
+		tempY = tempY/modY;
+		
+		AudioPlayer.play(tempY);
 	}
 }
